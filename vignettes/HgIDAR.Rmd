@@ -37,7 +37,7 @@ library(devtools)
 - In most cases, you just use install_github("author/package"). For example, with my R/broman package, which exists at github.com/micro-hg-cpg/HgIDAR", you’d type
 
 ```{r, eval=FALSE}
-install_github("micro-hg-cpg/HgIDAR")
+install_github("micro-hg-cpg/HgIDAR", dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 ```{r setup}
@@ -136,12 +136,12 @@ mean_km <- mean_km(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, 
 
 Similarly to the functioning of km() and mean_km(), the functions kd() and mean_kd() can be used to obtain the demethylation rate constant. 
 
-```{r, methylation}
+```{r, demethylation}
 #Either calculating the individual values of each injection
-kd_byinjection <- kd(peaks_1, masses_1, abundances_1, samples = 24, injections = 3, type = 'liquid', incub_IHg=199, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
+kd_byinjection <- kd(peaks_1, masses_1, abundances_1, samples = 24, injections = 3, type = 'liquid', incub_MMHg=201, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
 
 #or the mean between the injections 
-mean_kd <- mean_kd(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, type = 'liquid', incub_IHg=199, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
+mean_kd <- mean_kd(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, type = 'liquid', incub_MMHg = 201, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
 
 ```
 
