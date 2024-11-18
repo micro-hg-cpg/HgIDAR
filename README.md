@@ -131,5 +131,6 @@ mean_kd <- mean_kd(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, 
 
 ## References
 
-Monperrus, M., Tessier, E., Veschambre, S., Amouroux, D., & Donard, O. (2005). Simultaneous speciation of mercury and butyltin compounds in natural waters and snow by propylation and species-specific isotope dilution mass spectrometry analysis. Analytical and Bioanalytical Chemistry, 381(4), 854–862. https://doi.org/10.1007/s00216-004-2973-7
-Rodriguez-Gonzalez, P., Bouchet, S., Monperrus, M., Tessier, E., & Amouroux, D. (2013). In situ experiments for element species-specific environmental reactivity of tin and mercury compounds using isotopic tracers and multiple linear regression. Environmental Science and Pollution Research, 20(3), 1269-1280. https://doi.org/10.1007/s11356-012-1019-5
+-  Monperrus, M., Tessier, E., Veschambre, S., Amouroux, D., & Donard, O. (2005). Simultaneous speciation of mercury and butyltin compounds in natural waters and snow by propylation and species-specific isotope dilution mass spectrometry analysis. Analytical and Bioanalytical Chemistry, 381(4), 854–862. https://doi.org/10.1007/s00216-004-2973-7
+  
+-  Rodriguez-Gonzalez, P., Bouchet, S., Monperrus, M., Tessier, E., & Amouroux, D. (2013). In situ experiments for element species-specific environmental reactivity of tin and mercury compounds using isotopic tracers and multiple linear regression. Environmental Science and Pollution Research, 20(3), 1269-1280. https://doi.org/10.1007/s11356-012-1019-5
