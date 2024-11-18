@@ -1,11 +1,11 @@
 Package: HgIDAR
 Title: Mercury (Hg) Isotopic Dilution Approaches with R
-Version: 0.6.0
+Version: 1.0
 Authors@R: c(
   person("Carla", "Pereira-Garcia", , "cpereira9876@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-0178-544X")),
-  person("Ester", "Lopez", , "estermlopezgarcia@gmail.com", role = c("ctb"),
-    comment = c(ORCID = "")),
+  person("Ester Maria", "Lopez-García", , "estermlopezgarcia@gmail.com", role = c("ctb"),
+    comment = c(ORCID = "0009-0007-5671-3981")),
   person("Celine", "Lavergne", , "lavergne@icm.csic.es", role = c("ctb"),
     comment = c(ORCID = "0000-0002-2002-8655")),
   person("Andrea", "G. Bravo", , "andrea.bravo@icm.csic.es", role = c("aut"),

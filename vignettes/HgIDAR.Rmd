@@ -109,7 +109,7 @@ mean_MMHg_concentration <- mean_MMHg(peaks_1, masses_1, abundances_1, 24, 3, typ
 
 ```
 
-##Calculate methylation rate constant 
+##Calculate methylation/demethylation rate constant 
 
 The functions km() and mean_km() can be used to calculate directly the potential methylation rate constant by injection or by sample. 
 
@@ -122,5 +122,14 @@ mean_km <- mean_km(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, 
 
 ```
 
+Similarly to the functioning of km() and mean_km(), the functions kd() and mean_kd() can be used to obtain the demethylation rate constant. 
 
+```{r, methylation}
+#Either calculating the individual values of each injection
+kd_byinjection <- kd(peaks_1, masses_1, abundances_1, samples = 24, injections = 3, type = 'liquid', incub_IHg=199, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
+
+#or the mean between the injections 
+mean_kd <- mean_kd(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, type = 'liquid', incub_IHg=199, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
+
+```
 
