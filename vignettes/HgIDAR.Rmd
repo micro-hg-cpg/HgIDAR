@@ -16,9 +16,14 @@ knitr::opts_chunk$set(
 )
 ```
 
+
 ## Introduction
 
-The HgIDAR package can be use to calculate Hg concentrations and Hg methylation and demathylation ratios using isotopic dilution approaches. This package is available in CRAN repository and installation can be done with the following command:
+The HgIDAR package can be use to calculate Hg concentrations and Hg methylation and demathylation ratios using isotopic dilution approaches (Monperrus et al., 2005; Rodriguez-Gonzalez et al., 2013). 
+
+## Installation
+
+This package is available in github repository and installation can be done with the following command:
 
 - First, you need to install the devtools package. You can do this from CRAN. Invoke R and then type
 
@@ -40,20 +45,27 @@ library(HgIDAR)
 ```
 
 ## Example data
+Three examples are provided:
+- Example 1 correspondes to water samples in which isotope 199 enriched inorganic mercury (IHg) and isotope 201 enriched monomethylmercury (MMHg) were used of incubation and isotope 198 enriched IHg and 202 MMHg were used for quantification. 
+- Example 2 corresponds to sediment samples in which isotope 204 enriched inorganic mercury (IHg) and isotope 200 enriched monomethylmercury (MMHg) were used of incubation and isotope 199 enriched IHg and 201 MMHg were used for quantification.
+- Example 3 corresponds also to sediment samples in which isotope 199 enriched inorganic mercury (IHg) and isotope 201 enriched monomethylmercury (MMHg) were used of incubation and isotope 198 enriched IHg and 202 MMHg were used for quantification. 
 
-To explore the functions available in this package, we'll use an mock-up scenario in which we'll have double spiked sediment samples, with isotope 199 enriched inorganic mercury (IHg) and isotope 201 enriched monomethylmercury (MMHg). These incubation spikes will allow us to measure the transformations; by measuring the concentration of 199 MMHg, we can calculate how much MMHg has form during the incubation and thus the potential methylation rate constant. Likewise by measuring the concentration of 201 IHg, we can calculate how much MMHg has undergone demethylation and thus calculate the potencial demethylation rate constant.
+To explore the functions available in this package, you can use any of the  mock-up scenarios provided in the examples. We have choose to use example 1 in this explanation. 
+This mock up experiment is a sea water that has been double spiked, with isotope 199 enriched inorganic mercury (IHg) and isotope 201 enriched monomethylmercury (MMHg) and then incubated. These incubation spikes will allow us to measure the transformations; by measuring the concentration of 199 MMHg, we can calculate how much MMHg has form during the incubation and thus the potential methylation rate constant. Likewise by measuring the concentration of 201 IHg, we can calculate how much MMHg has undergone demethylation and thus calculate the potencial demethylation rate constant.
 
 In order to measure the concentrations of each isotope, we need to add an quantification spike (isotope enriched 198 IHg and 202 MMHg) to act as an internal reference.
 
 We need several files in order to make the calculations:
 
 -   The integrated peak areas of Hg isotopes. The results from the ICP-MS-GC need to be processed before hand and only the peaks areas will be used for this calculations.
+
 ```{r, example_peaks}
 head(peaks_1)
 
 ```
 
 -   The masses of enriched stable isotopes used for quantification and the mass of water sample. In the case of sediments or other solids, mass of sediment sample and acid used during the digestions and the mass of extract used for derivatization.
+
 ```{r, example_masses}
 head(masses_1)
 ```
@@ -133,3 +145,8 @@ mean_kd <- mean_kd(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, 
 
 ```
 
+
+##References
+
+Monperrus, M., Tessier, E., Veschambre, S., Amouroux, D., & Donard, O. (2005). Simultaneous speciation of mercury and butyltin compounds in natural waters and snow by propylation and species-specific isotope dilution mass spectrometry analysis. Analytical and Bioanalytical Chemistry, 381(4), 854–862. https://doi.org/10.1007/s00216-004-2973-7
+Rodriguez-Gonzalez, P., Bouchet, S., Monperrus, M., Tessier, E., & Amouroux, D. (2013). In situ experiments for element species-specific environmental reactivity of tin and mercury compounds using isotopic tracers and multiple linear regression. Environmental Science and Pollution Research, 20(3), 1269-1280. https://doi.org/10.1007/s11356-012-1019-5

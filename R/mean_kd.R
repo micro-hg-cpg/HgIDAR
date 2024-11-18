@@ -47,7 +47,7 @@
 #'   samples = 26,
 #'   injections = 3,
 #'   type = 'solid',
-#'   incub_MMHg=204,
+#'   incub_MMHg=200,
 #'   quant_MMHg = 201,
 #'   quant_IHg= 199,
 #'   spike_concentration_MMHg=0.23,
