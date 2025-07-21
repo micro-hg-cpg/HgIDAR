@@ -77,11 +77,11 @@ rsd_ratios=function(x, form = c('IHg', 'MMHg', 'all'), samples, cutoff = 10, inc
 
         rp2<- rp1%>%
           dplyr::mutate("Ratio_incub_quant" = IHg_added_incub/IHg_added_quant)%>%
-          dplyr::mutate("RSD_ratio_incub_quant" = rtemis::rsd(`Ratio_incub_quant`))%>%
+          dplyr::mutate("RSD_ratio_incub_quant" = stats::sd(`Ratio_incub_quant`)/base::mean(`Ratio_incub_quant`)*100)%>%
           dplyr::mutate("Ratio_formed_quant"= IHg_formed/IHg_added_quant)%>%
-          dplyr::mutate("RSD_formed_quant"= rtemis::rsd( `Ratio_formed_quant`))%>%
+          dplyr::mutate("RSD_formed_quant"= stats::sd( `Ratio_formed_quant`)/base::mean(`Ratio_formed_quant`)*100)%>%
           dplyr::mutate("Ratio_formed_nat"= IHg_formed/nat)%>%
-          dplyr::mutate("RSD_formed_nat"= rtemis::rsd( `Ratio_formed_nat`))%>%
+          dplyr::mutate("RSD_formed_nat"= stats::sd( `Ratio_formed_nat`)/base::mean(`Ratio_formed_nat`)*100)%>%
           dplyr::mutate("Ratio_natural"= natural2/natural)
         Peaks_ratios <- rbind(Peaks_ratios, rp2)
       }
@@ -131,11 +131,11 @@ rsd_ratios=function(x, form = c('IHg', 'MMHg', 'all'), samples, cutoff = 10, inc
 
         rp2<- rp1%>%
           dplyr::mutate("Ratio_incub_quant" = MMHg_added_incub/MMHg_added_quant)%>%
-          dplyr::mutate("RSD_ratio_incub_quant" = rtemis::rsd(`Ratio_incub_quant`))%>%
+          dplyr::mutate("RSD_ratio_incub_quant" = stats::sd(`Ratio_incub_quant`)/base::mean(`Ratio_incub_quant`)*100)%>%
           dplyr::mutate("Ratio_formed_quant"= MMHg_formed/MMHg_added_quant)%>%
-          dplyr::mutate("RSD_formed_quant"= rtemis::rsd( `Ratio_formed_quant`))%>%
+          dplyr::mutate("RSD_formed_quant"= stats::sd( `Ratio_formed_quant`)/base::mean(`Ratio_formed_quant`)*100)%>%
           dplyr::mutate("Ratio_formed_nat"= MMHg_formed/nat)%>%
-          dplyr::mutate("RSD_formed_nat"= rtemis::rsd( `Ratio_formed_nat`))%>%
+          dplyr::mutate("RSD_formed_nat"= stats::sd( `Ratio_formed_nat`)/base::mean(`Ratio_formed_nat`)*100)%>%
           dplyr::mutate("Ratio_natural"= natural2/natural)
         Peaks_ratios <- rbind(Peaks_ratios, rp2)
       }
@@ -181,11 +181,11 @@ rsd_ratios=function(x, form = c('IHg', 'MMHg', 'all'), samples, cutoff = 10, inc
         rm(MMHg_formed, MMHg_added_incub, MMHg_added_quant,natural, natural2)
         rp.mm2<- rp.mm1%>%
           dplyr::mutate("Ratio_incub_quant.mm" = MMHg_added_incub/MMHg_added_quant)%>%
-          dplyr::mutate("RSD_ratio_incub_quant.mm" = rtemis::rsd(`Ratio_incub_quant.mm`))%>%
+          dplyr::mutate("RSD_ratio_incub_quant.mm" = stats::sd(`Ratio_incub_quant.mm`)/base::mean(`Ratio_incub_quant.mm`)*100)%>%
           dplyr::mutate("Ratio_formed_quant.mm"= MMHg_formed/MMHg_added_quant)%>%
-          dplyr::mutate("RSD_formed_quant.mm"= rtemis::rsd( `Ratio_formed_quant.mm`))%>%
+          dplyr::mutate("RSD_formed_quant.mm"= stats::sd(`Ratio_formed_quant.mm`)/base::mean(`Ratio_formed_quant.mm`)*100)%>%
           dplyr::mutate("Ratio_formed_nat"= MMHg_formed/nat)%>%
-          dplyr::mutate("RSD_formed_nat"= rtemis::rsd( `Ratio_formed_nat`))%>%
+          dplyr::mutate("RSD_formed_nat"= stats::sd( `Ratio_formed_nat`)/base::mean(`Ratio_formed_nat`)*100)%>%
           dplyr::mutate("Ratio_natural.mm"= natural2/natural)
         Peaks_ratios.mm <- rbind(Peaks_ratios.mm, rp.mm2)
       }
@@ -229,11 +229,11 @@ rsd_ratios=function(x, form = c('IHg', 'MMHg', 'all'), samples, cutoff = 10, inc
               natural, natural2)
         rp.in2<- rp.in1%>%
           dplyr::mutate("Ratio_incub_quant.in" = IHg_added_incub/IHg_added_quant)%>%
-          dplyr::mutate("RSD_ratio_incub_quant.in" = rtemis::rsd(`Ratio_incub_quant.in`))%>%
+          dplyr::mutate("RSD_ratio_incub_quant.in" = stats::sd(`Ratio_incub_quant.in`)/base::mean(`Ratio_incub_quant.in`)*100)%>%
           dplyr::mutate("Ratio_formed_quant.in"= IHg_formed/IHg_added_quant)%>%
-          dplyr::mutate("RSD_formed_quant.in"= rtemis::rsd( `Ratio_formed_quant.in`))%>%
+          dplyr::mutate("RSD_formed_quant.in"= stats::sd( `Ratio_formed_quant.in`)/base::mean(`Ratio_formed_quant.in`)*100)%>%
           dplyr::mutate("Ratio_formed_nat"= IHg_formed/nat)%>%
-          dplyr::mutate("RSD_formed_nat"= rtemis::rsd( `Ratio_formed_nat`))%>%
+          dplyr::mutate("RSD_formed_nat"= stats::sd( `Ratio_formed_nat`)/base::mean(`Ratio_formed_nat`)*100)%>%
           dplyr::mutate("Ratio_natural.in"= natural2/natural)
         Peaks_ratios.in <- rbind(Peaks_ratios.in, rp.in2)
       }

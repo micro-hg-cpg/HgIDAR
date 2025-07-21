@@ -27,7 +27,7 @@ plot_rsd_peaks=function(x, form = c('IHg', 'MMHg', 'all'), cutoff = 10){
 
       a <- peaks_IHg%>%
         dplyr::group_by(sample)%>%
-        dplyr::summarise_all(rtemis::rsd)%>%
+        dplyr::summarise_all(stats::sd/mean*100)%>%
         dplyr::select(-c(injection))
 
       b <- reshape2::melt(a, id.vars = 'sample')
@@ -50,7 +50,7 @@ plot_rsd_peaks=function(x, form = c('IHg', 'MMHg', 'all'), cutoff = 10){
 
       a <- peaks_MMHg%>%
         dplyr::group_by(sample)%>%
-        dplyr::summarise_all(rtemis::rsd)%>%
+        dplyr::summarise_all(stats::sd/mean*100)%>%
         dplyr::select(-c(injection))
 
       b <- reshape2::melt(a, id.vars = 'sample')
@@ -71,7 +71,7 @@ plot_rsd_peaks=function(x, form = c('IHg', 'MMHg', 'all'), cutoff = 10){
 
       a <- peaks1%>%
         dplyr::group_by(sample)%>%
-        dplyr::summarise_all(rtemis::rsd)%>%
+        dplyr::summarise_all(stats::sd/mean*100)%>%
         dplyr::select(-c(injection))
 
       b <- reshape2::melt(a, id.vars = 'sample')
