@@ -24,7 +24,7 @@ rsd_peaks=function(x, form = c('IHg', 'MMHg', 'all'), cutoff = 10){
 #cambiar los nombres de las funciones.
     a <- peaks_IHg%>%
       dplyr::group_by(sample)%>%
-      dplyr::summarise_all(list(mean, stats::sd, TIGERr::compute_RSD()))%>%
+      dplyr::summarise_all(list(mean, stats::sd, rtemis::rsd))%>%
       dplyr::select(-c('injection_fn1', 'injection_fn2', 'injection_fn3'))
     b <- peaks_IHg%>%
       dplyr::left_join(a)
@@ -36,7 +36,7 @@ rsd_peaks=function(x, form = c('IHg', 'MMHg', 'all'), cutoff = 10){
 
     a <- peaks_MMHg%>%
       dplyr::group_by(sample)%>%
-      dplyr::summarise_all(list(mean, stats::sd, TIGERr::compute_RSD()))%>%
+      dplyr::summarise_all(list(mean, stats::sd, rtemis::rsd))%>%
       dplyr::select(-c('injection_fn1', 'injection_fn2', 'injection_fn3'))
     b <- peaks_MMHg%>%
       dplyr::left_join(a)
@@ -46,7 +46,7 @@ rsd_peaks=function(x, form = c('IHg', 'MMHg', 'all'), cutoff = 10){
 
     a <- peaks1%>%
       dplyr::group_by(sample)%>%
-      dplyr::summarise_all(list(mean, stats::sd, TIGERr::compute_RSD()))%>%
+      dplyr::summarise_all(list(mean, stats::sd, rtemis::rsd))%>%
       dplyr::select(-c('injection_fn1', 'injection_fn2', 'injection_fn3'))
     b <- peaks1%>%
       dplyr::left_join(a)

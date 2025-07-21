@@ -1,6 +1,6 @@
 Package: HgIDAR
 Title: Mercury (Hg) Isotopic Dilution Approaches with R
-Version: 1.0.1
+Version: 1.0
 Authors@R: c(
   person("Carla", "Pereira-Garcia", , "cpereira9876@gmail.com", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-0178-544X")),
@@ -23,7 +23,7 @@ Imports:
     ggplot2,
     gridExtra,
     reshape2,
-    stats,
+    rtemis,
     tibble,
     tidyr
 Suggests: 
