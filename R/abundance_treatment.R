@@ -28,7 +28,7 @@ abun_treat=function(z) {
         abun.5[,5]/abun.5[5,5]
       )
       ratios_matrix <- matrix(ratios_matrix, nrow = 5, ncol = 5, byrow = TRUE)
-
+      ratios_matrix <- t(ratios_matrix)
     } else {
       abun.3 <- abun.2%>%
         dplyr::select(1:2 |contains(paste(abun.2[1,2]))|contains(paste(abun.2[2,2]))|
