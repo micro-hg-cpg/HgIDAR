@@ -12,7 +12,7 @@ mean_km(
   injections = 3,
   type = c("liquid", "solid"),
   incub_IHg,
-  incub_MMHg,
+  incub_MMHg = NULL,
   quant_MMHg,
   quant_IHg,
   nat,

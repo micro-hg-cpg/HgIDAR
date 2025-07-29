@@ -35,7 +35,7 @@
 #' mean_MMHg(peaks_2, masses_2, abundances_2, 26, 3, type = 'solid' ,204,200,199,201,202,0.23)
 
 mean_MMHg=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), incub_IHg,
-                   incub_MMHg,quant_IHg,quant_MMHg,nat, spike_concentration_MMHg ){
+                   incub_MMHg=NULL,quant_IHg,quant_MMHg,nat, spike_concentration_MMHg ){
   type <- match.arg(type)
   #set the sample interval
   Samples <- c(1:samples)
@@ -78,10 +78,7 @@ mean_MMHg=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid')
                               "isotope_MMHg"=liquid$variable,
                               "concentration_MMHg"=liquid$conc_ext)
   o <- tidyr::pivot_wider(data=concentration, names_from = isotope_MMHg, values_from = concentration_MMHg)
-  p <- o%>%
-    dplyr::group_by(sample)%>%
-    dplyr::summarise_all(list(mean, stats::sd))%>%
-    dplyr::select(-c('injection_fn1', 'injection_fn2'))
+  p <- summarise_isotopes(o)
 
 
   if (type == 'solid') {
@@ -104,25 +101,13 @@ mean_MMHg=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid')
                                     "concentration_MMHg"=solid$conc_sed)
 
         o <- tidyr::pivot_wider(data=concentration, names_from = isotope_MMHg, values_from = concentration_MMHg)
-        p <- o%>%
-          dplyr::group_by(sample)%>%
-          dplyr::summarise_all(list(mean, stats::sd))%>%
-          dplyr::select(-c('injection_fn1', 'injection_fn2'))
+        p <- summarise_isotopes(o)
       }
     }
   }
 
-  final_output <- data.frame(p[,1],
-                             p[,2], p[,7],
-                             p[,3], p[,8],
-                             p[,4], p[,9],
-                             p[,5], p[,10],
-                             p[,6], p[,11])
-  colnames(final_output)  <- gsub('fn1', 'mean', colnames(final_output))
-  colnames(final_output)  <- gsub('fn2', 'sd', colnames(final_output))
 
-
-  return(final_output)
+  return(p)
 
 }
 

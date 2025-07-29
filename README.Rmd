@@ -103,6 +103,8 @@ When the relative standard deviation among injections is too high, you need to g
 
 This package offers the possibility of calculating the concentrations of both IHg and MMHg either by injection or by sample. 
 
+`IHg` and `mean_IHg` return a final table in which you have the final inorganic mercury concentrations for all the isotopes in each analytical replicate/injection or in each sample respectively. The same for `MMHg` and `mean_MMHg`; you will obtain the concentration of monomethylmercury in each of the isotopes. 
+
 ```{r, concentrations}
 #Either calculating the individual values of each injection
 IHg_concentrations_byinjection <- IHg(peaks_1, masses_1, abundances_1, 24, 3, type = 'liquid', 198, 5)
@@ -119,7 +121,7 @@ mean_MMHg_concentration <- mean_MMHg(peaks_1, masses_1, abundances_1, 24, 3, typ
 
 ##Calculate methylation/demethylation rate constant 
 
-The functions km() and mean_km() can be used to calculate directly the potential methylation rate constant by injection or by sample. 
+The functions `km` and `mean_km` can be used to calculate directly the methylation yield by injection or by sample. 
 
 ```{r, methylation}
 #Either calculating the individual values of each injection
@@ -130,7 +132,7 @@ mean_km <- mean_km(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, 
 
 ```
 
-Similarly to the functioning of km() and mean_km(), the functions kd() and mean_kd() can be used to obtain the demethylation rate constant. 
+Similarly to the functioning of `km` and `mean_km`, the functions `kd` and `mean_kd` can be used to obtain the demethylation yield. 
 
 ```{r, methylation}
 #Either calculating the individual values of each injection
@@ -140,6 +142,14 @@ kd_byinjection <- kd(peaks_1, masses_1, abundances_1, samples = 24, injections =
 mean_kd <- mean_kd(peaks_1,masses_1,abundances_1,samples = 24 , injections = 3, type = 'liquid', incub_IHg=199, quant_MMHg = 202, quant_IHg= 198, spike_concentration_MMHg=0.5, spike_concentration_IHg=5)
 
 ```
+
+
+## Single-spike incubation (used for methylation yield). 
+
+This package supports also calculations when only one spike was added during the incubation. The same functions can be use to calculate the concentrations as well as the methylation yields. The only difference is that `incub_MMHg` should be missing from the options. 
+
+When calculating the concentrations or de/methylation yields, the initial abundance file should contain only the isotopes that will be use for the analysis. For example, if IHg 199 is added during incubation and IHg 198 and MMHg 201 are added during quantification, you can choose your natural isotope between 200 and 202 (we recommend 202 because its natural abundance is larger and it will be easier to measure). Thus, the final abundance file should contain only those four isotopes: 198, 199, 201 and 202. 
+
 
 
 ##References

@@ -44,7 +44,7 @@
 #'   nat=200,
 #'   spike_concentration_MMHg=0.22,
 #'   spike_concentration_IHg=5)
-km=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), incub_IHg, incub_MMHg, quant_MMHg, quant_IHg, spike_concentration_MMHg, nat, spike_concentration_IHg ){
+km=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), incub_IHg, incub_MMHg=NULL, quant_MMHg, quant_IHg, spike_concentration_MMHg, nat, spike_concentration_IHg ){
   type <- match.arg(type)
 
   resultsIHg <- IHg(x, y, z, samples = samples , injections = injections, type=type,incub_IHg=incub_IHg,incub_MMHg=incub_MMHg, quant_MMHg=quant_MMHg, quant_IHg=quant_IHg,nat=nat, spike_concentration_IHg = spike_concentration_IHg)

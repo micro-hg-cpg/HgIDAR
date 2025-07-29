@@ -12,7 +12,7 @@ mean_IHg(
   injections = 3,
   type = c("liquid", "solid"),
   incub_IHg,
-  incub_MMHg,
+  incub_MMHg = NULL,
   quant_IHg,
   quant_MMHg,
   nat,

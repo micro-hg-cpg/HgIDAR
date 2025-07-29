@@ -86,22 +86,11 @@ mean_kd=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), 
     dplyr::mutate("totalconcentration" = w[,3]+w[,4])%>%
     dplyr::mutate("demethylation" = (w[,3]/totalconcentration))%>%
     dplyr::select(-c('totalconcentration'))
-  p <- o%>%
-    dplyr::group_by(sample)%>%
-    dplyr::summarise_all(list(mean, stats::sd))%>%
-    dplyr::select(-c('injection_fn1', 'injection_fn2'))
+  p <- summarise_isotopes(o)
 
 
 
-  final_output <- data.frame(p[,1],
-                             p[,2], p[,5],
-                             p[,3], p[,6],
-                             p[,4], p[,7])
-
-  colnames(final_output)  <- gsub('fn1', 'mean', colnames(final_output))
-  colnames(final_output)  <- gsub('fn2', 'sd', colnames(final_output))
-
-  return(final_output)
+  return(p)
 
 }
 

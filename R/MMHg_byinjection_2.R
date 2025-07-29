@@ -35,7 +35,7 @@
 
 
 MMHg=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid') ,incub_IHg,
-              incub_MMHg,quant_IHg,quant_MMHg,nat, spike_concentration_MMHg ){
+              incub_MMHg=NULL,quant_IHg,quant_MMHg,nat, spike_concentration_MMHg ){
   type <- match.arg(type)
   #set the sample interval
   Samples <- c(1:samples)

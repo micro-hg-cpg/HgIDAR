@@ -35,7 +35,7 @@
 #' IHg(peaks_1, masses_1, abundances_1, 24, 3, type = 'liquid' ,199,201,198,202,200, 5)
 #' IHg(peaks_2, masses_2, abundances_2, 26, 3, type = 'solid' ,204,200,199,201,202, 27.27)
 IHg=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'),incub_IHg,
-             incub_MMHg,quant_IHg,quant_MMHg,nat, spike_concentration_IHg){
+             incub_MMHg=NULL,quant_IHg,quant_MMHg,nat, spike_concentration_IHg){
   type <- match.arg(type)
   #set the sample interval
   Samples <- c(1:samples)

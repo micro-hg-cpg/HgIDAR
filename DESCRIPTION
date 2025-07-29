@@ -25,7 +25,8 @@ Imports:
     reshape2,
     rtemisalpha,
     tibble,
-    tidyr
+    tidyr,
+    tidyselect
 Suggests: 
     knitr,
     rmarkdown,

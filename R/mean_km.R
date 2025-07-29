@@ -60,7 +60,7 @@
 #'   nat=202,
 #'   spike_concentration_MMHg=0.23,
 #'   spike_concentration_IHg=27.27)
-mean_km=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), incub_IHg,incub_MMHg, quant_MMHg, quant_IHg,nat, spike_concentration_MMHg, spike_concentration_IHg ){
+mean_km=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), incub_IHg,incub_MMHg=NULL, quant_MMHg, quant_IHg,nat, spike_concentration_MMHg, spike_concentration_IHg ){
   type <- match.arg(type)
 
   resultsIHg <- IHg(x, y, z, samples = samples , injections = injections, type=type,incub_IHg=incub_IHg,incub_MMHg=incub_MMHg, quant_MMHg=quant_MMHg, quant_IHg=quant_IHg,nat=nat, spike_concentration_IHg = spike_concentration_IHg)
@@ -86,22 +86,10 @@ mean_km=function(x, y, z, samples, injections = 3, type = c('liquid', 'solid'), 
     dplyr::mutate("totalconcentration" = w[,3]+w[,4])%>%
     dplyr::mutate("methylation" = (w[,4]/totalconcentration))%>%
     dplyr::select(-c('totalconcentration'))
-  p <- o%>%
-    dplyr::group_by(sample)%>%
-    dplyr::summarise_all(list(mean, stats::sd))%>%
-    dplyr::select(-c('injection_fn1', 'injection_fn2'))
+  p <- summarise_isotopes(o)
 
 
-
-  final_output <- data.frame(p[,1],
-                             p[,2], p[,5],
-                             p[,3], p[,6],
-                             p[,4], p[,7])
-
-  colnames(final_output)  <- gsub('fn1', 'mean', colnames(final_output))
-  colnames(final_output)  <- gsub('fn2', 'sd', colnames(final_output))
-
-  return(final_output)
+  return(p)
 
 }
 
