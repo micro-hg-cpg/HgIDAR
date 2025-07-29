@@ -35,7 +35,7 @@
 #' plot_rsd_ratios(peaks_3, form = 'MMHg', 96, 5, 199, 201, 202, 198, 200)
 #'
 plot_rsd_ratios=function(x, form = c('IHg', 'MMHg', 'all'), samples, cutoff = 10, incub_IHg,
-                         incub_MMHg, quant_IHg, quant_MMHg, nat){
+                         incub_MMHg=NULL, quant_IHg, quant_MMHg, nat){
   form <- match.arg(form)
   peaks1 <- x[, colSums(x != 0) > 0]
   Samples <- c(1:samples)
