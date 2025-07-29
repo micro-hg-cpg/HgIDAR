@@ -240,7 +240,7 @@ rsd_ratios=function(x, form = c('IHg', 'MMHg', 'all'), samples, cutoff = 10, inc
       Peaks_ratios.in <- Peaks_ratios.in%>%
         dplyr::select(-c(IHg_added_incub, IHg_formed, IHg_added_quant,
                          natural, natural2))
-      Peaks_ratios <- merge(Peaks_ratios.in, Peaks_ratios.mm, by= 'sample', all = T)
+      Peaks_ratios <- merge(Peaks_ratios.in, Peaks_ratios.mm, by= c('sample','injection'), all = T)
 
 
 
